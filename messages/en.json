@@ -1,0 +1,24 @@
+{
+  "Navbar": {
+    "home": "Home",
+    "participants": "Participants",
+    "about": "About",
+    "contact": "Contact",
+    "adminLogin": "Admin Login"
+  },
+  "Hero": {
+    "title": "Empowering Communities Through Collective Giving",
+    "description": "Join our platform to create lasting impact. Together we can change the world.",
+    "donate": "Donate Now",
+    "viewProgress": "View Progress"
+  },
+  "stats": {
+    "totalFundRaised": "Total Fund Raised",
+    "targetGoal": "Target Goal",
+    "activeParticipants": "Active Participants"
+  },
+  "common": {
+    "loading": "লোড হচ্ছে...",
+    "error": "স্ট্যাটস লোড করতে সমস্যা হয়েছে"
+  }
+}
