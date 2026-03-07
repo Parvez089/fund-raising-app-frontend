@@ -5,11 +5,8 @@ import { useState } from "react";
 import { api } from "@/lib/api";
 import { getErrorMessage } from "@/lib/getErrorMessage";
 const CAMPAIGNS = [
-  "Education Relief",
-  "Medical Aid",
-  "Flood Response",
-  "Food Distribution",
-  "Shelter Program",
+  "renovation fund",
+
 ];
 
 interface QuickAddFundProps {
