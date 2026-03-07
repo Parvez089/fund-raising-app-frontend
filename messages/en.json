@@ -7,8 +7,8 @@
     "adminLogin": "Admin Login"
   },
   "Hero": {
-    "title": "Empowering Communities Through Collective Giving",
-    "description": "Join our platform to create lasting impact. Together we can change the world.",
+    "title": "Participate in the cemetery renovation project.",
+    "description": "Many have already joined us. For any information or inquiries, please feel free to contact us.",
     "donate": "Donate Now",
     "viewProgress": "View Progress"
   },
@@ -18,7 +18,7 @@
     "activeParticipants": "Active Participants"
   },
   "common": {
-    "loading": "লোড হচ্ছে...",
-    "error": "স্ট্যাটস লোড করতে সমস্যা হয়েছে"
+    "loading": "Loading...",
+    "error": "Problem Status loading"
   }
 }
