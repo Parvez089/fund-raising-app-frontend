@@ -27,12 +27,15 @@ const handleLogin = async (e: React.FormEvent) => {
   console.log("Full URL:", `${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`);
 
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-      credentials: "include",
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+        credentials: "include",
+      },
+    );
 
     // DEBUG - see the actual response
     console.log("Response status:", res.status);
@@ -40,9 +43,9 @@ const handleLogin = async (e: React.FormEvent) => {
     console.log("Response data:", data);
 
     if (res.ok) {
-          localStorage.setItem("adminRole", data.role);
-      router.push(`/${locale}/admin/dashboard`);  // ← locale-aware redirect
-        router.refresh();
+      localStorage.setItem("adminRole", data.role);
+      router.push(`/${locale}/admin/dashboard`); // ← locale-aware redirect
+      router.refresh();
     } else {
       setError(data.message || "Invalid email or password!");
     }

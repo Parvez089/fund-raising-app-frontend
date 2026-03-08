@@ -53,48 +53,50 @@ export default function Chart({ data, thisMonthAmount }: ChartProps) {
     ` L ${points[points.length - 1].x} ${height - padding.bottom} L ${points[0].x} ${height - padding.bottom} Z`;
 
   return (
-    <div className="bg-white rounded-2xl p-6 border border-gray-100">
-      <div className="flex items-start justify-between mb-6">
+    <div className='bg-white rounded-2xl p-6 border border-gray-100'>
+      <div className='flex items-start justify-between mb-6'>
         <div>
-          <h3 className="font-bold text-gray-900 text-lg">Monthly Fund Inflow</h3>
-          <p className="text-sm text-gray-400 mt-0.5">
+          <h3 className='font-bold text-gray-900 text-lg'>
+            Monthly Fund Inflow
+          </h3>
+          <p className='text-sm text-gray-400 mt-0.5'>
             Showing data for the last {data.length} months
           </p>
         </div>
-        <div className="text-right">
-          <p className="text-2xl font-bold text-emerald-600">
+        <div className='text-right'>
+          <p className='text-2xl font-bold text-emerald-600'>
             ${thisMonthAmount.toLocaleString()}
           </p>
-          <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">
+          <p className='text-xs text-gray-400 font-medium uppercase tracking-wider'>
             This Month
           </p>
         </div>
       </div>
 
       {/* SVG Chart */}
-      <div className="w-full overflow-hidden">
+      <div className='w-full overflow-hidden'>
         <svg
           viewBox={`0 0 ${width} ${height}`}
-          className="w-full"
-          preserveAspectRatio="none">
+          className='w-full'
+          preserveAspectRatio='none'>
           <defs>
-            <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#10b981" stopOpacity="0.15" />
-              <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
+            <linearGradient id='areaGrad' x1='0' y1='0' x2='0' y2='1'>
+              <stop offset='0%' stopColor='#10b981' stopOpacity='0.15' />
+              <stop offset='100%' stopColor='#10b981' stopOpacity='0' />
             </linearGradient>
           </defs>
 
           {/* Area fill */}
-          <path d={areaPath} fill="url(#areaGrad)" />
+          <path d={areaPath} fill='url(#areaGrad)' />
 
           {/* Line */}
           <path
             d={linePath}
-            fill="none"
-            stroke="#10b981"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            fill='none'
+            stroke='#10b981'
+            strokeWidth='2.5'
+            strokeLinecap='round'
+            strokeLinejoin='round'
           />
 
           {/* Dots */}
@@ -103,18 +105,18 @@ export default function Chart({ data, thisMonthAmount }: ChartProps) {
               key={i}
               cx={pt.x}
               cy={pt.y}
-              r="4"
-              fill="white"
-              stroke="#10b981"
-              strokeWidth="2.5"
+              r='4'
+              fill='white'
+              stroke='#10b981'
+              strokeWidth='2.5'
             />
           ))}
         </svg>
 
         {/* X Labels */}
-        <div className="flex justify-between mt-2 px-2">
+        <div className='flex justify-between mt-2 px-2'>
           {data.map((d, i) => (
-            <span key={i} className="text-xs text-gray-400 font-medium">
+            <span key={i} className='text-xs text-gray-400 font-medium'>
               {d.month}
             </span>
           ))}
