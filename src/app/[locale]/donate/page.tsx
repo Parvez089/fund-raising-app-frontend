@@ -94,7 +94,7 @@ export default function DonatePage() {
             <span className="text-white text-xs font-black">F</span>
           </div>
           <span className="font-extrabold text-gray-900 text-sm tracking-tight">
-            FundRaise BD
+            সংস্কার ফান্ড
           </span>
         </Link>
 

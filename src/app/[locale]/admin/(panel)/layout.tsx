@@ -92,7 +92,7 @@ export default function AdminLayout({
         </div>
         <div>
           <p className='text-sm font-bold text-gray-900 leading-tight'>
-            FundRaise BD
+            সংস্কার ফান্ড
           </p>
           <p className='text-[10px] text-gray-400 uppercase tracking-wider'>
             Admin Panel
@@ -159,7 +159,7 @@ export default function AdminLayout({
             </div>
             <div>
               <p className='text-sm font-bold text-gray-900 leading-tight'>
-                FundRaise BD
+                সংস্কার ফান্ড
               </p>
               <p className='text-[10px] text-gray-400 uppercase tracking-wider'>
                 Admin Panel

@@ -47,7 +47,7 @@ const handleScrollToProgress = () => {
       <div className="h-64 md:h-96 rounded-3xl overflow-hidden relative">
         <Image
           src="/Images/hero.png"
-          alt="FundRaise BD"
+          alt="সংস্কার ফান্ড"
           fill
           className="object-cover"
           priority
