@@ -88,7 +88,7 @@ export default function AdminLayout({
     <>
       <div className='flex items-center gap-3 px-5 py-5 border-b border-gray-100'>
         <div className='w-9 h-9 rounded-xl bg-emerald-600 flex items-center justify-center flex-shrink-0'>
-          <span className='text-white font-bold text-sm'>FB</span>
+          <span className='text-white font-bold text-sm'>স</span>
         </div>
         <div>
           <p className='text-sm font-bold text-gray-900 leading-tight'>
@@ -155,7 +155,7 @@ export default function AdminLayout({
         <div className='flex items-center justify-between px-5 py-5 border-b border-gray-100'>
           <div className='flex items-center gap-3'>
             <div className='w-9 h-9 rounded-xl bg-emerald-600 flex items-center justify-center'>
-              <span className='text-white font-bold text-sm'>FB</span>
+              <span className='text-white font-bold text-sm'>স</span>
             </div>
             <div>
               <p className='text-sm font-bold text-gray-900 leading-tight'>
