@@ -70,13 +70,13 @@ export default function AdminLayout({
     setMobileOpen(false);
   }, [pathname]);
 
- const handleLogout = async () => {
-   try {
-     await api.post("/api/auth/logout", {});
-   } finally {
-     router.push(`/${locale}/admin/login`);
-   }
- };
+  const handleLogout = async () => {
+    try {
+      await api.post("/api/auth/logout", {});
+    } finally {
+      router.push(`/${locale}/admin/login`);
+    }
+  };
   const navigate = (href: string) => {
     router.push(`/${locale}/admin/${href}`);
   };

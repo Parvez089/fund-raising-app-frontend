@@ -31,7 +31,7 @@ export default async function middleware(req: NextRequest) {
   if (isLoginPage && token) {
     const locale = pathname.startsWith("/en") ? "en" : "bn";
     return NextResponse.redirect(
-      new URL(`/${locale}/admin/dashboard`, req.url)
+      new URL(`/${locale}/admin/dashboard`, req.url),
     );
   }
 
