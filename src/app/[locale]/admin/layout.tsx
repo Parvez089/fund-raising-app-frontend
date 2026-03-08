@@ -1,7 +1,7 @@
 /** @format */
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { useLocale } from "next-intl";
 import {
@@ -46,13 +46,12 @@ export default function AdminLayout({
 
   const [admin, setAdmin] = useState<AdminData | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [checking, setChecking] = useState(true);
 
-  // Detect active route
   const activeHref =
     NAV.find((n) => pathname.includes(n.href))?.href ?? "dashboard";
   const pageTitle = PAGE_TITLES[activeHref] ?? "Dashboard";
 
-  // Auth check once on mount
   useEffect(() => {
     const check = async () => {
       try {
@@ -60,12 +59,13 @@ export default function AdminLayout({
         setAdmin(res.data);
       } catch {
         router.push(`/${locale}/admin/login`);
+      } finally {
+        setChecking(false);
       }
     };
     check();
   }, [router, locale]);
 
-  // Close mobile drawer on route change
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
@@ -77,14 +77,15 @@ export default function AdminLayout({
       router.push(`/${locale}/admin/login`);
     }
   };
+
   const navigate = (href: string) => {
     router.push(`/${locale}/admin/${href}`);
   };
 
-  // ── Sidebar content (shared between desktop + mobile drawer) ──
+  if (checking) return null;
+
   const SidebarContent = () => (
     <>
-      {/* Logo */}
       <div className='flex items-center gap-3 px-5 py-5 border-b border-gray-100'>
         <div className='w-9 h-9 rounded-xl bg-emerald-600 flex items-center justify-center flex-shrink-0'>
           <span className='text-white font-bold text-sm'>FB</span>
@@ -99,7 +100,6 @@ export default function AdminLayout({
         </div>
       </div>
 
-      {/* Nav */}
       <nav className='flex-1 px-3 py-4 space-y-1'>
         {NAV.map(({ label, icon: Icon, href }) => {
           const active = activeHref === href;
@@ -121,7 +121,6 @@ export default function AdminLayout({
         })}
       </nav>
 
-      {/* Logout */}
       <div className='px-3 py-4 border-t border-gray-100'>
         <button
           onClick={handleLogout}
@@ -135,12 +134,12 @@ export default function AdminLayout({
 
   return (
     <div className='flex min-h-screen bg-[#f5f6fa]'>
-      {/* ── Desktop Sidebar (persistent, never unmounts) ── */}
+      {/* Desktop Sidebar */}
       <aside className='hidden lg:flex w-60 flex-col bg-white border-r border-gray-100 fixed top-0 left-0 h-full z-20'>
         <SidebarContent />
       </aside>
 
-      {/* ── Mobile Drawer overlay ── */}
+      {/* Mobile overlay */}
       {mobileOpen && (
         <div
           className='fixed inset-0 bg-black/30 z-30 lg:hidden'
@@ -148,7 +147,7 @@ export default function AdminLayout({
         />
       )}
 
-      {/* ── Mobile Drawer ── */}
+      {/* Mobile Drawer */}
       <aside
         className={`fixed top-0 left-0 h-full w-60 bg-white border-r border-gray-100 z-40 flex flex-col lg:hidden transition-transform duration-300 ${
           mobileOpen ? "translate-x-0" : "-translate-x-full"
@@ -203,18 +202,15 @@ export default function AdminLayout({
         </div>
       </aside>
 
-      {/* ── Main area ── */}
+      {/* Main area */}
       <div className='flex-1 lg:ml-60 flex flex-col min-w-0'>
-        {/* ── Persistent Header (never unmounts) ── */}
         <header className='h-16 bg-white border-b border-gray-100 flex items-center justify-between px-6 sticky top-0 z-10'>
           <div className='flex items-center gap-3'>
-            {/* Mobile hamburger */}
             <button
               onClick={() => setMobileOpen(true)}
               className='lg:hidden w-8 h-8 flex items-center justify-center rounded-lg hover:bg-gray-100 transition'>
               <Menu className='w-4 h-4 text-gray-600' />
             </button>
-            {/* Dynamic page title */}
             <h1 className='text-base font-bold text-gray-900'>{pageTitle}</h1>
           </div>
 
@@ -239,7 +235,6 @@ export default function AdminLayout({
           </div>
         </header>
 
-        {/* ── Page content (only this part changes) ── */}
         <main className='flex-1 overflow-y-auto'>{children}</main>
       </div>
     </div>

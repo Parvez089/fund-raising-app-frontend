@@ -12,24 +12,17 @@ const intlMiddleware = createMiddleware({
 export default async function middleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname;
 
-  // Check if accessing admin dashboard
-  const isDashboard =
-    pathname.includes("/admin/dashboard") ||
-    pathname.includes("/admin/settings");
-
+  const isAdminRoute =
+    pathname.includes("/admin") && !pathname.includes("/admin/login");
   const isLoginPage = pathname.includes("/admin/login");
-
   const token = req.cookies.get("token")?.value;
+  const locale = pathname.startsWith("/en") ? "en" : "bn";
 
-  // If trying to access dashboard without token → redirect to login
-  if (isDashboard && !token) {
-    const locale = pathname.startsWith("/en") ? "en" : "bn";
+  if (isAdminRoute && !token) {
     return NextResponse.redirect(new URL(`/${locale}/admin/login`, req.url));
   }
 
-  // If already logged in and visiting login page → redirect to dashboard
   if (isLoginPage && token) {
-    const locale = pathname.startsWith("/en") ? "en" : "bn";
     return NextResponse.redirect(
       new URL(`/${locale}/admin/dashboard`, req.url),
     );
