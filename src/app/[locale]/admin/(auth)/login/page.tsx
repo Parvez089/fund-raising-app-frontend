@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Eye, EyeOff, ShieldCheck } from "lucide-react";
 import Link from "next/link";
-import { useLocale } from "next-intl";    
+import { useLocale } from "next-intl";
 
 export default function AdminLoginPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -15,47 +15,44 @@ export default function AdminLoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
-   const locale = useLocale();    
+  const locale = useLocale();
 
-const handleLogin = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setLoading(true);
-  setError("");
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
 
-  // DEBUG - remove after fixing
-  console.log("API URL:", process.env.NEXT_PUBLIC_API_URL);
-  console.log("Full URL:", `${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`);
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+          credentials: "include",
+        },
+      );
 
-  try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-        credentials: "include",
-      },
-    );
+      const data = await res.json();
 
-    // DEBUG - see the actual response
-    console.log("Response status:", res.status);
-    const data = await res.json();
-    console.log("Response data:", data);
-
-    if (res.ok) {
-      localStorage.setItem("adminRole", data.role);
-      router.push(`/${locale}/admin/dashboard`); // ← locale-aware redirect
-      router.refresh();
-    } else {
-      setError(data.message || "Invalid email or password!");
+      if (res.ok) {
+        // Set cookie manually so Next.js middleware can read it
+        document.cookie = `token=${data.token}; path=/; max-age=${
+          7 * 24 * 60 * 60
+        }; SameSite=Lax`;
+        localStorage.setItem("adminRole", data.role);
+        router.push(`/${locale}/admin/dashboard`);
+        router.refresh();
+      } else {
+        setError(data.message || "Invalid email or password!");
+      }
+    } catch (err) {
+      console.error("Fetch error:", err);
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
     }
-  } catch (err) {
-    console.error("Fetch error:", err);
-    setError("Something went wrong. Please try again.");
-  } finally {
-    setLoading(false);
-  }
-};
+  };
 
   return (
     <main className='min-h-screen flex items-center justify-center bg-gray-50 px-4'>
@@ -81,7 +78,7 @@ const handleLogin = async (e: React.FormEvent) => {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder='admin@fundraisebd.org'
+              placeholder='admin@fundraisebd.com'
               className='w-full p-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500'
             />
           </div>
