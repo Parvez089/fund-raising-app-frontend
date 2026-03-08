@@ -20,5 +20,56 @@
   "common": {
     "loading": "Loading...",
     "error": "Error loading stats"
-  }
+  },
+  "RecentContributors": {
+  "title": "সাম্প্রতিক অবদানকারী",
+  "subtitle": "আজকে যারা পরিবর্তন আনছেন তাদের সাথে পরিচিত হন।",
+  "viewAll": "সব কার্যক্রম দেখুন",
+  "noContributions": "এখনো কোনো অবদান নেই।",
+  "beFirst": "প্রথম পরিবর্তনকারী হন!",
+  "loadMore": "আরও অবদানকারী দেখুন",
+  "loading": "লোড হচ্ছে...",
+  "justNow": "এইমাত্র",
+  "minutesAgo": "{count} মিনিট আগে",
+  "minutesAgoPlural": "{count} মিনিট আগে",
+  "hoursAgo": "{count} ঘণ্টা আগে",
+  "hoursAgoPlural": "{count} ঘণ্টা আগে",
+  "yesterday": "গতকাল",
+  "daysAgo": "{count} দিন আগে"
+},
+"CampaignProgress": {
+  "title": "ক্যাম্পেইনের অগ্রগতি",
+  "subtitle": "{target} লক্ষ্যমাত্রার মধ্যে {raised} সংগ্রহ হয়েছে"
+},
+"Footer": {
+  "tagline": "একটি প্রিমিয়াম অলাভজনক ফান্ডরেইজিং প্ল্যাটফর্ম যা স্বচ্ছতা, সামাজিক প্রভাব এবং টেকসই প্রবৃদ্ধিতে নিবেদিত।",
+  "quickLinks": "দ্রুত লিংক",
+  "aboutUs": "আমাদের সম্পর্কে",
+  "howItWorks": "এটি কীভাবে কাজ করে",
+  "activeCampaigns": "সক্রিয় ক্যাম্পেইন",
+  "successStories": "সাফল্যের গল্প",
+  "legal": "আইনি",
+  "privacyPolicy": "গোপনীয়তা নীতি",
+  "termsOfService": "সেবার শর্তাবলী",
+  "donationPolicy": "দান নীতি",
+  "transparencyReport": "স্বচ্ছতা প্রতিবেদন",
+  "acceptedPayments": "গ্রহণযোগ্য পেমেন্ট",
+  "copyright": "© {year}  সংস্কার ফান্ড। সর্বস্বত্ব সংরক্ষিত।"
+},
+"Donate": {
+  "backToHome": "হোমে ফিরুন",
+  "headline": "পরিবর্তন",
+  "headlineAccent": "আনুন",
+  "subheadline": "আপনার অবদান সরাসরি সামাজিক উন্নয়নে সহায়তা করবে।",
+  "officialMerchant": "অফিসিয়াল পেমেন্ট নাম্বার",
+  "donateVia": "দান করুন",
+  "merchantNumber": "পার্সোনাল নম্বর",
+  "scanOrCopy": "অ্যাপে পেমেন্ট করতে নম্বরটি কপি বা স্ক্যান করুন",
+  "openApp": "খুলুন",
+  "app": "অ্যাপ",
+  "viewOtherMethods": "অন্য পেমেন্ট পদ্ধতি দেখুন",
+  "securePayment": "নিরাপদ পেমেন্ট",
+  "officialNGO": "অফিসিয়াল এনজিও",
+  "legalNote": "দান করে আপনি আমাদের সেবার শর্তাবলী ও গোপনীয়তা নীতিতে সম্মত হচ্ছেন। সংস্কার ফান্ড অলাভজনক তহবিল।"
+}
 }

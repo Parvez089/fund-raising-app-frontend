@@ -20,5 +20,56 @@
   "common": {
     "loading": "Loading...",
     "error": "Problem Status loading"
-  }
+  },
+  "RecentContributors": {
+  "title": "Recent Contributors",
+  "subtitle": "Meet the amazing people making a difference today.",
+  "viewAll": "View All Activity",
+  "noContributions": "No contributions yet.",
+  "beFirst": "Be the first to make a difference!",
+  "loadMore": "Load more contributors",
+  "loading": "Loading...",
+  "justNow": "Just now",
+  "minutesAgo": "{count} minute ago",
+  "minutesAgoPlural": "{count} minutes ago",
+  "hoursAgo": "{count} hour ago",
+  "hoursAgoPlural": "{count} hours ago",
+  "yesterday": "Yesterday",
+  "daysAgo": "{count} days ago"
+},
+"CampaignProgress": {
+  "title": "Campaign Progress",
+  "subtitle": "{raised} raised of {target} target"
+},
+"Footer": {
+  "tagline": "A premium non-profit fundraising platform dedicated to transparency, community impact, and sustainable growth across the nation.",
+  "quickLinks": "Quick Links",
+  "aboutUs": "About Us",
+  "howItWorks": "How it works",
+  "activeCampaigns": "Active Campaigns",
+  "successStories": "Success Stories",
+  "legal": "Legal",
+  "privacyPolicy": "Privacy Policy",
+  "termsOfService": "Terms of Service",
+  "donationPolicy": "Donation Policy",
+  "transparencyReport": "Transparency Report",
+  "acceptedPayments": "Accepted Payments",
+ "copyright": "© {year}  সংস্কার ফান্ড. All rights reserved."
+},
+"Donate": {
+  "backToHome": "Back to Home",
+  "headline": "Make an",
+  "headlineAccent": "Impact",
+  "subheadline": "Your contribution directly supports development across our.",
+  "officialMerchant": "Offical Payment Number",
+  "donateVia": "Donate via",
+  "merchantNumber": "Personal Number",
+  "scanOrCopy": "Scan or copy the number to pay in app",
+  "openApp": "Open",
+  "app": "App",
+  "viewOtherMethods": "View Other Payment Methods",
+  "securePayment": "Secure Payment",
+  "officialNGO": "Official NGO",
+  "legalNote": "By donating, you agree to our Terms of Service and Privacy Policy. সংস্কার ফান্ড is a registered non-profit fund."
+}
 }
