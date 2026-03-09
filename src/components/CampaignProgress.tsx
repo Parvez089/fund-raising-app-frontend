@@ -3,7 +3,6 @@
 
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
 interface ProgressData {
@@ -15,21 +14,17 @@ interface ProgressData {
 
 export default function CampaignProgress() {
   const t = useTranslations("CampaignProgress");
-  const pathname = usePathname();
 
-  const isBn = pathname.startsWith("/bn");
-  const symbol = isBn ? "৳" : "$";
-  const fmt = (amount: number) => `${symbol}${amount.toLocaleString("en-US")}`;
+  // ✅ Always ৳ — no locale detection needed
+  const fmt = (amount: number) => `৳${amount.toLocaleString("en-US")}`;
 
-  const [data, setData] = useState<ProgressData | null>(null);
+  const [data,    setData]    = useState<ProgressData | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProgress = async () => {
       try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/progress`
-        );
+        const res  = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/progress`);
         const json = await res.json();
         setData(json);
       } catch {

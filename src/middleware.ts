@@ -12,19 +12,24 @@ const intlMiddleware = createMiddleware({
 export default async function middleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname;
 
-  const isAdminRoute =
-    pathname.includes("/admin") && !pathname.includes("/admin/login");
-  const isLoginPage = pathname.includes("/admin/login");
-  const token = req.cookies.get("token")?.value;
-  const locale = pathname.startsWith("/en") ? "en" : "bn";
+  const isAdminPanel = /\/(en|bn)\/admin(?!\/login)/.test(pathname);
+  const isLoginPage  = /\/(en|bn)\/admin\/login/.test(pathname);
+  const token        = req.cookies.get("token")?.value;
+  const locale       = pathname.startsWith("/en") ? "en" : "bn";
 
-  if (isAdminRoute && !token) {
-    return NextResponse.redirect(new URL(`/${locale}/admin/login`, req.url));
+  // ── No token → redirect to login (only for panel pages, NOT login itself) ──
+  if (isAdminPanel && !token) {
+    const loginUrl = new URL(`/${locale}/admin/login`, req.url);
+    // Prevent redirect loop — if already going to login, skip
+    if (pathname !== loginUrl.pathname) {
+      return NextResponse.redirect(loginUrl);
+    }
   }
 
+  // ── Has token on login page → redirect to dashboard ──
   if (isLoginPage && token) {
     return NextResponse.redirect(
-      new URL(`/${locale}/admin/dashboard`, req.url),
+      new URL(`/${locale}/admin/dashboard`, req.url)
     );
   }
 
