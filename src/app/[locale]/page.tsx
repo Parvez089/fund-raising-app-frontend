@@ -15,7 +15,7 @@ export default function HomePage() {
       <StatsDashboard/>
       <CampaignProgress/>
        <RecentContributors />
-       <Footer/>
+      
     </main>
   );
 }

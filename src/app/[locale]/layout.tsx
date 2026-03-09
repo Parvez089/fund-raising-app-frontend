@@ -4,6 +4,7 @@ import { getMessages } from "next-intl/server";
 import Navbar from "@/components/Navbar";
 import "@/app/globals.css";
 import Providers from "@/components/Providers";
+import Footer from "@/components/Footer";
 
 
 export default async function RootLayout({
@@ -27,6 +28,7 @@ export default async function RootLayout({
           <Navbar />
           <main>{children}</main>
            </Providers>
+            <Footer /> 
         </NextIntlClientProvider>
       </body>
     </html>
