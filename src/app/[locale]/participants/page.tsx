@@ -13,6 +13,7 @@ interface Participant {
   name: string;
   amount: number;
   campaign: string;
+  status: string;
   badge: string;
   initials: string;
   isAnonymous: boolean;
@@ -27,6 +28,9 @@ const BADGE: Record<string, { bg: string; text: string; dot: string }> = {
   "TOP CONTRIBUTOR":    { bg: "bg-emerald-50", text: "text-emerald-600", dot: "bg-emerald-400" },
   "ACTIVE MEMBER":      { bg: "bg-sky-50",     text: "text-sky-500",     dot: "bg-sky-400"     },
   "RECENT CONTRIBUTOR": { bg: "bg-gray-50",    text: "text-gray-400",    dot: "bg-gray-300"    },
+  // ✅ Status-based badges
+  "PENDING PAYMENT":    { bg: "bg-amber-50",   text: "text-amber-600",   dot: "bg-amber-400"   },
+  "FLAGGED":            { bg: "bg-red-50",     text: "text-red-500",     dot: "bg-red-400"     },
 };
 
 const AVATAR_COLORS = [
